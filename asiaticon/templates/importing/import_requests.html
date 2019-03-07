@@ -1,0 +1,40 @@
+{% extends "layouts/basic.html" %}
+{% load staticfiles %}
+{% block page_title %}Requests{% endblock %}
+{% block extra_css %} 
+{% endblock %}
+
+{% block body_content %}
+<br> 
+<div class='row'>
+    <h1>Import Requests</h1>
+</div>
+
+<div class='row'>
+    <table class='table'>
+        <tr>
+            <th>ID</th>
+            <th>Client</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Comments</th>
+            <th>Aeroshipment</th>
+            <th>Actions</th>
+        </tr>
+        {% for import_request in import_requests reversed %}
+            <tr>
+                <td><a href="{% url 'importing:import_request' import_request.id %}">{{ import_request.id }}</a></td>
+                <td>{{ import_request.client.name }}</td>
+                <td>{{ import_request.product_name }}</td>
+                <td>{{ import_request.quantity }}</td>
+                <td>{{ import_request.comments }}</td>
+                <td>{{ import_request.aeroshipment }}</td>
+                <td><a class='btn' href="{% url 'importing:new_import_response' import_request.id %}">Answer</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+
+{% block footer_content %}
+{% endblock %}

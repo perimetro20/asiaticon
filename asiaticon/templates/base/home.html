@@ -1,0 +1,29 @@
+{% extends "layouts/basic.html" %}
+{% load staticfiles %}
+{% load user_extras %}
+{% block page_title %}Asiaticon{% endblock %}
+{% block extra_css %} 
+	<link rel="stylesheet" type="text/css" href={% static "css/base/home.css" %}>
+{% endblock %}
+{% block header %}
+{% endblock %}
+
+{% block body_content %}
+<div class='row text-center'>
+    {% if request.user|is_admin %}
+        <a href="{% url 'user_profiles:agents' %}" class="btn btn-lg btn-success">Agents</a>
+        <a href="{% url 'importing:containers' %}" class="btn btn-lg btn-success">Containers</a>
+    {% endif %}
+    {% if request.user|is_agent %}
+        <a href="{% url 'importing:clients' %}" class="btn btn-lg btn-success">Database</a>
+        <a href="{% url 'importing:import_responses' %}" class="btn btn-lg btn-success">Import Responses</a>
+    {% endif %}
+    {% if request.user|is_export %}
+        <a href="{% url 'importing:import_requests' %}" class="btn btn-lg btn-success">Import Requests</a>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block footer_content %}
+{% endblock %}

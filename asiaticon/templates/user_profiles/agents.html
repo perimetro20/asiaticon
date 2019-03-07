@@ -1,0 +1,35 @@
+{% extends "layouts/basic.html" %}
+{% load staticfiles %}
+{% block page_title %}Clientes{% endblock %}
+{% block extra_css %} 
+{% endblock %}
+
+{% block body_content %}
+<br> 
+<div class='row text-centered'>
+    <a href="{% url 'user_profiles:new_agent' %}" class="btn btn-lg btn-success">Create New Agent</a> 
+</div>
+<div class='row'>
+    <h1>Agents</h1>
+</div>
+
+<div class='row'>
+    <table class='table'>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Office</th>
+        </tr>
+        {% for agent in agents reversed %}
+            <tr>
+                <td>{{ agent.user.get_full_name }}</td>
+                <td>{{ agent.user.username }}</td>
+                <td>{{ agent.office }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+
+{% block footer_content %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layouts/basic.html" %}
+{% load staticfiles %}
+{% block page_title %}Client Information{% endblock %}
+{% block extra_css %} 
+{% endblock %}
+
+{% block body_content %}
+<div class='row'>
+    <h1>Client Information</h1>
+</div>
+<div class='row'>
+    Name: {{ client.name }}<br>
+    Email: {{ client.email }}<br>
+    Phonenumber: {{ client.phone_number }}<br>
+    Whatsapp: {{ client.whatsapp }}<br>
+    WeChat: {{ client.wechat }}<br>
+    Comments: {{ client.comments }}<br>
+    Agent: {{ client.agent }}<br>
+    Creation Date: {{ client.created_at }}<br>
+</div>
+<div class='row'>
+    <a href="{% url 'importing:edit_client' client.id %}" class="btn btn-lg btn-warning">Edit Client</a>
+    <a href="{% url 'importing:clients' %}" class="btn btn-lg btn-primary">Return to Database</a>
+    <a href="{% url 'importing:new_import_request' client.id %}" class="btn btn-lg btn-primary">Create Import Request</a>
+</div>
+{% endblock %}
+
+{% block footer_content %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "layouts/basic.html" %}
+{% load staticfiles %}
+{% block page_title %}Client Information{% endblock %}
+{% block extra_css %} 
+{% endblock %}
+
+{% block body_content %}
+<div class='row'>
+    <h1>Import Response Information</h1>
+</div>
+<div class='row'>
+    <strong>HS CODE:</strong> {{ import_response.hs_code }} <br>
+    <strong>Material:</strong> {{ import_response.material }} <br>
+    <strong>Height:</strong> {{ import_response.height }} <br>
+    <strong>Width:</strong> {{ import_response.width }} <br>
+    <strong>Depth:</strong> {{ import_response.depth }} <br>
+    <strong>Weight:</strong> {{ import_response.weight }} <br>
+    <strong>Color:</strong> {{ import_response.color }} <br>
+    <strong>Production Time:</strong> {{ import_response.time_production }} <br>
+    <strong>MOQ:</strong> {{ import_response.moq }} <br>
+    <strong>Total pcs:</strong> {{ import_response.total_pieces }} <br>
+    <strong>PCS/carton:</strong> {{ import_response.pieces_carton }} <br>
+    <strong>Box Heiht:</strong> {{ import_response.box_height }} <br>
+    <strong>Box Width:</strong> {{ import_response.box_width }} <br>
+    <strong>Box Depth:</strong> {{ import_response.box_depth }} <br>
+    <strong>Total CBM:</strong> {{ import_response.total_cbm }} <br>
+    <strong>FOB PRICE / USD:</strong> {{ import_response.fob_price }} <br>
+    <strong>Comments:</strong> {{ import_response.comments }} <br>
+    <strong>Supplier Data:</strong> {{ import_response.supplier_information }}
+</div>
+
+{% endblock %}
+
+{% block footer_content %}
+{% endblock %}

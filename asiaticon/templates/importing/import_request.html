@@ -1,0 +1,25 @@
+{% extends "layouts/basic.html" %}
+{% load staticfiles %}
+{% block page_title %}Client Information{% endblock %}
+{% block extra_css %} 
+{% endblock %}
+
+{% block body_content %}
+<div class='row'>
+    <h1>Import Request Information</h1>
+</div>
+<div class='row'>
+    Client: {{ import_request.client.name }}<br>
+    Photo: <br>
+    <img src="{{ import_request.photo.url }}">
+    <br>
+    Product Name: {{ import_request.product_name }}<br>
+    Quantity: {{ import_request.quantity }}<br>
+    Comments: {{ import_request.comments }}<br>
+    Aeroshipment: {{ import_request.aeroshipment }}<br>
+</div>
+
+{% endblock %}
+
+{% block footer_content %}
+{% endblock %}

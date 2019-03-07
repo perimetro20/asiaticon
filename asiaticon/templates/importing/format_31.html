@@ -1,0 +1,75 @@
+{% extends "layouts/basic.html" %}
+{% load staticfiles %}
+{% block page_title %}Client Information{% endblock %}
+{% block extra_css %} 
+{% endblock %}
+
+{% block body_content %}
+<h1>Format 3.1</h1>
+<div>
+    <h2>Origin Data</h2>
+    <strong>Number:</strong> 0.001 <br>
+    <strong>Product:</strong>{{ format.import_request.product_name }} <br>
+    <strong>Data: </strong>1<br>
+    <strong>FOB PRICE $USD/PCS:</strong>${{ format.fob_price_usd_pcs }}<br>
+    <strong>FOB PRICE / USD: </strong>${{ format.fob_price }} <br>
+    <strong>PCS/carton: </strong> {{ format.pieces_carton }} <br>
+    <strong>TOTAL PCS: </strong> {{ format.total_pieces }} <br>
+    <strong>TOTAL CBM: </strong> {{ format.total_cbm}}<br>
+</div>
+<div>
+    <h2>Container Shipment</h2>
+    <strong>Estimate: </strong>{{ format.container_estimate }}<br>
+    <strong>Total Transport $USD:</strong>2000<br>
+    <strong>Per unit Transport $USD:</strong>0.25<br>
+</div>
+<div>
+    <h2>C.I.F. Costs</h2>
+    <strong>Total C.I.F.:</strong>23748.50<br>
+    <strong>Total C.I.F. / PCS: </strong>2.95<br>
+</div>
+<div>
+    <h2>HS CODE: {{ format.hs_code }}</h2>
+    <h3>Duty</h3>
+    <strong>ADVALOREM (IGI): </strong>1.15<br>
+    <strong>DTA</strong>1.01<br>
+    <strong>I.V.A.</strong>1.16<br>
+</div>
+<div>
+    <h2>Taxes</h2>
+    <strong>Total Taxes:</strong>8248.80<br>
+    <strong>Total Taxes / PCS:</strong>1.02<br>
+</div>
+<div>
+    <h2>Nationalization Costs</h2>
+    <strong>Estimate:</strong><br>
+    <strong>Nationalization Total: </strong>550<br>
+    <strong>Nationalization $USD/PC: </strong>0.07<br>
+</div>
+<div>
+    <h2>Ground Transport</h2>
+    <strong>Estimate:</strong>1500<br>
+    <strong>Ground Transport:</strong>1500<br>
+    <strong>Ground Transport / PCS:</strong>0.19<br>
+</div>
+<div>
+    <h2>Estimated Total</h2>
+    <strong>Total: </strong>34047.30<br>
+    <strong>Total / PCS: </strong>4.2269<br>
+</div>
+<div>
+    <h2>Profit</h2>
+    <strong>Price Increase:</strong>56.6<br>
+    <strong>Price + Profit:</strong>4.73<br>
+    <strong>Price Increase with Profit:</strong>75.0<br>
+    <strong>Profit / PCS:</strong>0.5<br>
+    <strong>Total Earnings:</strong>4017.58<br>
+</div>
+{% endblock %}
+
+{% block footer_content %}
+{% endblock %}
+
+{% block page_js %}
+    var clockElementMexico = document.getElementById( "clockMexico" );
+{% endblock page_js %}

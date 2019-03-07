@@ -1,0 +1,43 @@
+{% extends "layouts/basic.html" %}
+
+{% block body_content %}
+<div class="text-center container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Login into Asiaticon</h1>
+
+            {% if form.errors %}
+            <p>Username and password do not match. Please try again.</p>
+            {% endif %}
+
+            {% if next %}
+                {% if user.is_authenticated %}
+                <p>Your user does not have the permissions for this page. To
+                proceed, login in with an authorized user.</p>
+                {% else %}
+                <p>Please login to see this page.</p>
+                {% endif %}
+            {% endif %}
+
+            <h2>Login with your email</h2>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                Email:
+                <br>
+                {{ form.username }}
+                <br>
+
+                Password:
+                <br>
+                {{ form.password }}
+                <br>
+                <input class="btn btn-primary" type="submit" value="Login" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+
+            {# Assumes you setup the password_reset view in your URLconf #}
+            <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "layouts/basic.html" %}
+{% load staticfiles %}
+{% block page_title %}Clientes{% endblock %}
+{% block extra_css %} 
+{% endblock %}
+
+{% block body_content %}
+<br> 
+<div class='row text-centered'>
+    <a href="{% url 'importing:new_client' %}" class="btn btn-lg btn-success">Create New</a> 
+</div>
+<div class='row'>
+    <h1>Active Clients</h1>
+</div>
+<div class='row'>
+    <table class='table'>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Agent</th>
+            <th>Comments</th>
+            <th>Actions</th>
+        </tr>
+        {% for client in active_clients reversed %}
+            <tr>
+                <td> <a href="{% url 'importing:client' client.id %}">{{ client.id }}</a></td>
+                <td>{{ client.name }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.agent }}</td>
+                <td>{{ client.comments }}</td>
+                <td>
+                    <form action="{% url 'importing:deactivate_client' client.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="Submit" value="Deactivate"></button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class='row'>
+    <h1>Inactive Clients</h1>
+    <table class='table'>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Comments</th>
+            <th>Actions</th>
+        </tr>
+        {% for client in inactive_clients reversed %}
+            <tr>
+                <td> <a href="{% url 'importing:client' client.id %}">{{ client.id }}</a></td>
+                <td>{{ client.name }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.comments }}</td>
+                <td>
+                    <form action="{% url 'importing:activate_client' client.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="Submit" value="Activate"></button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+
+{% block footer_content %}
+{% endblock %}

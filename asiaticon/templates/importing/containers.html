@@ -1,0 +1,36 @@
+{% extends "layouts/basic.html" %}
+{% load staticfiles %}
+{% block page_title %}Containers{% endblock %}
+{% block extra_css %} 
+{% endblock %}
+
+{% block body_content %}
+<br> 
+<div class='row'>
+    <h1>Containers</h1>
+</div>
+
+<div class='row'>
+    <table class='table'>
+        <tr>
+            <th>CBM</th>
+            <th>Measurements</th>
+            <th>TON</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        {% for container in containers %}
+            <tr>
+                <td>{{ container.cbm }}</td>
+                <td>{{ container.measurements }}</td>
+                <td>{{ container.ton }}</td>
+                <td>${{ container.price }}</td>
+                <td><a class='btn' href="{% url 'importing:edit_container' container.id %}">Edit</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+
+{% block footer_content %}
+{% endblock %}

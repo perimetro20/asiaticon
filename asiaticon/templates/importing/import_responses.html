@@ -1,0 +1,40 @@
+{% extends "layouts/basic.html" %}
+{% load staticfiles %}
+{% block page_title %}Responses{% endblock %}
+{% block extra_css %} 
+{% endblock %}
+
+{% block body_content %}
+<br> 
+<div class='row'>
+    <h1>Import Responses</h1>
+</div>
+
+<div class='row'>
+    <table class='table'>
+        <tr>
+            <th>ID</th>
+            <th>HS CODE</th>
+            <th>Product Name</th>
+            <th>Production Time</th>
+            <th>MOQ</th>
+            <th>FOB PRICE/USD</th>
+            <th>Actions</th>
+        </tr>
+        {% for import_response in import_responses reversed %}
+            <tr>
+                <td><a href="{% url 'importing:import_response' import_response.id %}">{{ import_response.id }}</a></td>
+                <td>{{ import_response.hs_code }}</td>
+                <td>{{ import_response.import_request.product_name }}</td>
+                <td>{{ import_response.time_production }}</td>
+                <td>{{ import_response.moq }}</td>
+                <td>{{ import_response.fob_price }}</td>
+                <td><a href="{% url 'importing:format_31' import_response.id %}" class="btn btn-success">Format 3.1</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+
+{% block footer_content %}
+{% endblock %}
